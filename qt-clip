@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+import sys
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+
+app = QtGui.QGuiApplication(sys.argv)
+assert app
+image_file = sys.argv[1]
+assert image_file
+image = QtGui.QImage(image_file)
+assert image
+clipboard = app.clipboard()
+assert clipboard
+clipboard.setImage(image)
+timer = QtCore.QTimer()
+timer.timeout.connect(app.exit)
+timer.start(1000)  # Wait for Klipper to keep this image
+app.exec()

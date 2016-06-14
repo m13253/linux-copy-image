@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+import sys
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk, Gdk, GObject
+
+image_file = sys.argv[1]
+assert image_file
+image = Gtk.Image.new_from_file(image_file)
+assert image
+pixbuf = image.get_pixbuf()
+assert pixbuf
+clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+assert clipboard
+clipboard.set_image(pixbuf)
+clipboard.store()
+GObject.timeout_add_seconds(1, Gtk.main_quit)  # Increase this timeout if you do not have a clipboard management program
+Gtk.main()
