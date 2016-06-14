@@ -2,3 +2,5 @@ Copy a image into your Linux clipboard.
 You can combine this into your screenshot workflow.
 
 There are two versions, Gtk+ 3 and Qt 5. Choose the one that works in your Desktop Environment.
+
+It is recommended to have a clipboard management program running, or you may want to increase the "timeout" value in the source code.
